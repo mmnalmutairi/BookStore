@@ -6,6 +6,10 @@ class BookStore {
     Books = [];
     isLoading = false;
 
+    BookDelete = (book) => {
+        return book.filter((Book) => Book.name !== book);
+    };
+
     constructor() {
         makeAutoObservable(this);
     }
