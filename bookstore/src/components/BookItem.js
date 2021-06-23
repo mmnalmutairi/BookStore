@@ -3,6 +3,7 @@ import { BookWrapper } from './styles';
 import DeleteButton from "./buttons/DeleteButtons";
 import { Link } from 'react-router-dom';
 
+
 const BookItem = (props) => {
     return (
         <BookWrapper>
