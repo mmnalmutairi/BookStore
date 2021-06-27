@@ -1,22 +1,29 @@
-import Books from '/Users/engineermaha/Developement/JSFoundations-Git/BookStore/bookstore/src/Books.js';
+import Books from "../../Books";
 import { makeAutoObservable } from 'mobx';
 
 class BookStore {
 
-    Books = [];
+    Books = Books;
     isLoading = false;
-
-    BookDelete = (book) => {
-        return book.filter((Book) => Book.name !== book);
-    };
 
     constructor() {
         makeAutoObservable(this);
     }
+
+    deletebook = (bookname) => {
+        const updateBooks = this.Books.filter((book) => book.name !== bookname);
+        return this.Books = updateBooks;
+
+    };
     getBooks = () => {
 
         this.Books = Books;
-    }
+    };
+
+    createbook = (newBook) => {
+        this.Books.push(newBook);
+    };
+
 }
 
 const bookStore = new BookStore();

@@ -23,6 +23,32 @@ const Books = [
             "https://upload.wikimedia.org/wikipedia/en/thumb/8/81/KingArthurKnightsOfTheRoundTable1953.jpg/220px-KingArthurKnightsOfTheRoundTable1953.jpg",
         brief: " This is the story of one of the most magical legends, that of King Arthur and his noble knights of the round table."
     },
+    {
+        name: "The Silence of the Lambs",
+        image: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327227526l/1883275.jpg",
+        brief: "The Silence of the Lambs is a psychological horror novel by Thomas Harris. First published in 1988, it is the sequel to Harris's 1981 novel Red Dragon. Both novels feature the cannibalistic serial killer Dr. Hannibal Lecter, this time pitted against FBI Special Agent Clarice Starling."
+
+    },
+    {
+        name: "War and Peace",
+        image: "https://images.penguinrandomhouse.com/cover/9781400079988",
+        brief: "War and Peace is a novel mixed with chapters on history and philosophy by the Russian author Leo Tolstoy, first published serially, then published in its entirety in 1869. It is regarded as one of Tolstoy's finest literary achievements and remains an internationally praised classic of world literature.",
+    },
+    {
+        name: "Crime and Punishment",
+        image: "https://pictures.abebooks.com/inventory/22415515491.jpg",
+        brief: "Crime and Punishment is a novel by the Russian author Fyodor Dostoevsky. It was first published in the literary journal The Russian Messenger in twelve monthly installments during 1866. It was later published in a single volume. ",
+    },
+    {
+        name: "Great Expectations",
+        image: "https://m.media-amazon.com/images/I/51pqUWvj6NL.jpg",
+        brief: "Great Expectations is at once a superbly constructed novel of spellbinding mastery and a profound examination of moral values.",
+    },
+    {
+        name: "The Hunchback of Notre-Dame",
+        image: "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4027/9781402745751.jpg",
+        brief: "The Hunchback of Notre-Dame is a French Gothic novel by Victor Hugo, published in 1831. The novel has been described as a key text in French literature and has been adapted for film over a dozen times",
+    }
 
 ];
 
