@@ -20,7 +20,7 @@ margin: 10px;
 float: right;
 `;
 export const Title = styled.h1`
-text-align: center;
+margin-left: 40%;
 color: white;
 font-size: 40px;
 background-color: #84a59d;

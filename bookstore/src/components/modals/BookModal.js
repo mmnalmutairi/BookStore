@@ -47,7 +47,7 @@ const BookModal = (props) => {
 
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" onChange={handleChange}></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="brief" onChange={handleChange}></textarea>
                         </div>
                     </div>
                     <CreateButtonStyled> Add Book </CreateButtonStyled>

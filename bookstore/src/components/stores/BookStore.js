@@ -1,5 +1,6 @@
 import Books from "../../Books";
 import { makeAutoObservable } from 'mobx';
+import slugify from 'react-slugify';
 
 class BookStore {
 
@@ -21,6 +22,8 @@ class BookStore {
     };
 
     createbook = (newBook) => {
+        newBook.length = this.Books.length + 1;
+        newBook.slug = slugify(newBook.name);
         this.Books.push(newBook);
     };
 
