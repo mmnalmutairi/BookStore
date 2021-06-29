@@ -1,7 +1,8 @@
 import { BookWrapper, NameInItem } from './styles';
 import DeleteButton from "./buttons/DeleteButtons";
 import { Link } from 'react-router-dom';
-
+import UpdateButton from "./buttons/UpdateButton";
+import { observer } from 'mobx-react';
 
 const BookItem = (props) => {
 
@@ -12,7 +13,10 @@ const BookItem = (props) => {
                     <img className="book" alt={props.book.name} src={props.book.image} />
                 </Link>
                 <NameInItem>{props.book.name}</NameInItem>
-                <DeleteButton bookname={props.book.name} />
+                <div>
+                    <UpdateButton book={props.book} />
+                    <DeleteButton bookname={props.book.name} />
+                </div>
             </div>
 
         </BookWrapper>
@@ -21,6 +25,6 @@ const BookItem = (props) => {
 
 };
 
-export default BookItem;
+export default observer(BookItem);
 
 

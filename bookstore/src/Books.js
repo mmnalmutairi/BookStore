@@ -1,3 +1,8 @@
+
+
+// file name and the object name in lowercase
+
+// Add an id 
 const Books = [
     {
         name: "The Island Nurse",

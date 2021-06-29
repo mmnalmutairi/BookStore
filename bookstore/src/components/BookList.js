@@ -13,9 +13,9 @@ const BookList = () => {
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
 
-
+    // lowercase
     const booklist = bookStore.Books.filter((book) => book.name.toLowerCase().includes(query.toLowerCase())).map((book) => (
-        <Booksitem book={book} bookname={book.name} />
+        <Booksitem book={book} bookname={book.name} key={book.id} />
     ));
 
 

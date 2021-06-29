@@ -76,7 +76,7 @@ p {
 
 
 export const DeleteButtonStyled = styled.p`
-background-color: #f28482;
+  background-color: #f28482;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -85,9 +85,20 @@ background-color: #f28482;
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
-  margin: 4px 2px;
+  margin: 4px 2px; 
 
-  
+`;
+
+export const UpdateButtonStyled = styled.p`
+  background-color: #e5989b;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
 
 `;
 
