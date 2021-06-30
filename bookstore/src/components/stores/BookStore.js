@@ -19,7 +19,7 @@ class BookStore {
     // use the id here instead of name
     deletebook = async (bookName) => {
         try {
-            await axios.delete(`http://localhost:8000/Books/${bookName}`);
+            await axios.delete(`http://localhost:8000/books/${bookName}`);
             const updateBooks = this.Books.filter((book) => book.name !== bookName);
             this.Books = updateBooks;
         } catch (error) {
@@ -27,11 +27,17 @@ class BookStore {
         }
     };
 
-    updateBook = (updatedBook) => {
-        const book = this.Books.find((book) => book.id === updatedBook.id);
-        book.name = updatedBook.name;
-        book.image = updatedBook.image;
-        book.brief = updatedBook.brief;
+    updateBook = async (updatedBook) => {
+        try {
+            await axios.put(`http://localhost:8000/books/${updatedBook.id}`);
+            const book = this.Books.find((book) => book.id === +updatedBook.id);
+            book.name = updatedBook.name;
+            book.image = updatedBook.image;
+            book.brief = updatedBook.brief;
+
+        } catch (error) {
+            console.log(error);
+        }
 
     };
 
@@ -43,8 +49,9 @@ class BookStore {
     createbook = async (newBook) => {
 
         try {
-            const response = await axios.post("http://localhost:8000/Books", newBook);
+            const response = await axios.post("http://localhost:8000/books", newBook);
             this.Books.push(response.data);
+            console.log(response);
         } catch (error) {
             console.error(error);
         }
@@ -53,8 +60,9 @@ class BookStore {
 
     fetchBooks = async () => {
         try {
-            const response = axios.get("http://localhost:8000/Books");
-            this.Books = (await response).data;
+            const response = await axios.get("http://localhost:8000/books");
+            this.Books = (response).data;
+            console.log(response.data);
         } catch (error) {
             console.error("fetchMovies:", error)
         }
