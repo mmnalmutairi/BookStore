@@ -32,7 +32,6 @@ class BookStore {
         book.name = updatedBook.name;
         book.image = updatedBook.image;
         book.brief = updatedBook.brief;
-        console.log("updateBook -> book", book);
 
     };
 
@@ -41,10 +40,15 @@ class BookStore {
         this.Books = Books;
     };
 
-    createbook = (newBook) => {
-        newBook.length = this.Books.length + 1;
-        newBook.slug = slugify(newBook.name);
-        this.Books.push(newBook);
+    createbook = async (newBook) => {
+
+        try {
+            const response = await axios.post("http://localhost:8000/Books", newBook);
+            this.Books.push(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+
     };
 
     fetchBooks = async () => {
@@ -56,6 +60,8 @@ class BookStore {
         }
 
     }
+
+
 
 }
 
