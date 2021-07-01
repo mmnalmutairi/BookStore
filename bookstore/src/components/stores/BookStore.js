@@ -17,10 +17,10 @@ class BookStore {
     }
 
     // use the id here instead of name
-    deletebook = async (bookName) => {
+    deletebook = async (bookId) => {
         try {
-            await axios.delete(`http://localhost:8000/books/${bookName}`);
-            const updateBooks = this.Books.filter((book) => book.name !== bookName);
+            await axios.delete(`http://localhost:8000/books/${bookId}`);
+            const updateBooks = this.Books.filter((book) => book.id !== bookId);
             this.Books = updateBooks;
         } catch (error) {
             console.log(error);
@@ -29,7 +29,7 @@ class BookStore {
 
     updateBook = async (updatedBook) => {
         try {
-            await axios.put(`http://localhost:8000/books/${updatedBook.id}`);
+            await axios.put(`http://localhost:8000/books/${updatedBook.id}`, updatedBook);
             const book = this.Books.find((book) => book.id === +updatedBook.id);
             book.name = updatedBook.name;
             book.image = updatedBook.image;

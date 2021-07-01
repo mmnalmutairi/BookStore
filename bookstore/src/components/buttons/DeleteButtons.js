@@ -7,7 +7,7 @@ const DeleteButton = (props) => {
 
 
     const handleDelete = () => {
-        bookStore.deletebook(props.bookname);
+        bookStore.deletebook(props.bookId);
     };
 
 

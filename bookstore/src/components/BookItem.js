@@ -15,7 +15,7 @@ const BookItem = (props) => {
                 <NameInItem>{props.book.name}</NameInItem>
                 <div>
                     <UpdateButton book={props.book} />
-                    <DeleteButton bookname={props.book.name} />
+                    <DeleteButton bookId={props.book.id} />
                 </div>
             </div>
 
