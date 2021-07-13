@@ -1,7 +1,6 @@
-import Books from "../../Books";
 import { makeAutoObservable } from 'mobx';
-import slugify from 'react-slugify';
-import axios from 'axios';
+import instance from "./instance";
+
 
 
 // The file name starts with lowercase 
@@ -10,8 +9,7 @@ class BookStore {
     // proprty in lowercase
 
     Books = [];
-    isLoading = false;
-
+    isLoading = true;
     constructor() {
         makeAutoObservable(this);
     }
@@ -19,8 +17,8 @@ class BookStore {
     // use the id here instead of name
     deletebook = async (bookId) => {
         try {
-            await axios.delete(`http://localhost:8000/books/${bookId}`);
-            const updateBooks = this.Books.filter((book) => book.id !== bookId);
+            await instance.delete(`/books/${bookId}`);
+            const updateBooks = this.Books.filter((book) => book.id !== +bookId);
             this.Books = updateBooks;
         } catch (error) {
             console.log(error);
@@ -29,11 +27,11 @@ class BookStore {
 
     updateBook = async (updatedBook) => {
         try {
-            await axios.put(`http://localhost:8000/books/${updatedBook.id}`, updatedBook);
-            const book = this.Books.find((book) => book.id === +updatedBook.id);
-            book.name = updatedBook.name;
-            book.image = updatedBook.image;
-            book.brief = updatedBook.brief;
+            const formData = new FormData();
+            for (const key in updatedBook) formData.append(key, updatedBook[key]);
+            const response = await instance.put(`/books/${updatedBook.id}`, formData);
+            const book = this.Books.find((book) => book.id === response.data.id);
+            for (const key in book) book[key] = response.data[key];
 
         } catch (error) {
             console.log(error);
@@ -41,33 +39,36 @@ class BookStore {
 
     };
 
-    getBooks = () => {
-
-        this.Books = Books;
-    };
-
-    createbook = async (newBook) => {
+    createbook = async (newBook, shop) => {
 
         try {
-            const response = await axios.post("http://localhost:8000/books", newBook);
+            const formData = new FormData();
+            for (const key in newBook) formData.append(key, newBook[key]);
+
+            const response = await instance.post(`/shops/${shop.id}/books`, formData);
             this.Books.push(response.data);
-            console.log(response);
+            shop.books.push({ id: response.data.id });
         } catch (error) {
             console.error(error);
         }
 
     };
 
+
     fetchBooks = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/books");
+            const response = await instance.get("/books");
+            this.isLoading = false;
             this.Books = (response).data;
-            console.log(response.data);
         } catch (error) {
             console.error("fetchMovies:", error)
         }
 
-    }
+    };
+
+    getBookById = (bookId) => {
+        return this.Books.find((book) => book.id === bookId);
+    };
 
 
 
@@ -75,6 +76,5 @@ class BookStore {
 
 const bookStore = new BookStore();
 bookStore.fetchBooks();
-bookStore.getBooks();
 
 export default bookStore;

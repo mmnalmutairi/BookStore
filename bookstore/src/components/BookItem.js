@@ -3,7 +3,7 @@ import DeleteButton from "./buttons/DeleteButtons";
 import { Link } from 'react-router-dom';
 import UpdateButton from "./buttons/UpdateButton";
 import { observer } from 'mobx-react';
-
+import authStore from "./stores/authStore";
 const BookItem = (props) => {
 
     return (
@@ -14,8 +14,11 @@ const BookItem = (props) => {
                 </Link>
                 <NameInItem>{props.book.name}</NameInItem>
                 <div>
-                    <UpdateButton book={props.book} />
-                    <DeleteButton bookId={props.book.id} />
+                    {authStore.user && (<>
+                        <UpdateButton book={props.book} />
+                        <DeleteButton bookId={props.book.id} />
+                    </>)}
+
                 </div>
             </div>
 

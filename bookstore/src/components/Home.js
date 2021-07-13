@@ -1,7 +1,6 @@
 // import Books from "../Books";
 // import BookList from "./BookList";
 import React from 'react';
-import SearchBar from './SearchBar';
 import { Title, Description, Image } from "./styles";
 
 

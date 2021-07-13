@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Booksitem from "./BookItem";
 import SearchBar from "./SearchBar";
-import bookStore from "./stores/BookStore";
 import { observer } from "mobx-react";
 import { BiBookAddStyled } from "./styles";
 import BookModal from "./modals/BookModal";
+import bookStore from "./stores/BookStore";
+import authStore from "./stores/authStore";
 
-const BookList = () => {
+
+const BookList = ({ shop }) => {
     const [query, setQuery] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,8 +24,8 @@ const BookList = () => {
     return (
         <div>
             <SearchBar setQuery={setQuery} />
-            <BiBookAddStyled size="2em" onClick={openModal} />
-            <BookModal closeModal={closeModal} isOpen={isOpen} />
+            {authStore.user && <BiBookAddStyled size="2em" onClick={openModal} />}
+            <BookModal closeModal={closeModal} isOpen={isOpen} shop={shop} />
             <div className="list">{booklist}</div>
         </div>
 

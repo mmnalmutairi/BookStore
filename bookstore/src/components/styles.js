@@ -150,3 +150,8 @@ background-color: #f28482;
   margin: 6px 3px;
   margin-left: 40%;
 `;
+
+export const SignupButtonStyled = styled(Link)`
+margin: 10px;
+float: right;
+`;

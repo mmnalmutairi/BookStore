@@ -1,15 +1,12 @@
 import './App.css';
-import BookList from './components/BookList';
 import { ThemeProvider } from "styled-components";
-
 import { useState } from "react";
 import { GlobalStyle } from './components/styles';
-// import BookDetail from './components/BookDetails';
-
-import Home from "./components/Home";
-import { Route, Switch } from 'react-router';
 import NavBar from './components/NavBar';
-import BookDetails from './components/BookDetails'
+import { observer } from "mobx-react";
+import Routes from "./components/Routes";
+import shopStore from "../src/components/stores/shopStore";
+import bookStore from './components/stores/BookStore';
 
 const theme = {
   light: {
@@ -37,33 +34,13 @@ function App() {
 
         {/* Navigation bar session */}
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-
-        {/* Switch and Route session  */}
-        <Switch>
-
-          {/* Book Details Page  */}
-          <Route path="/Books/:name">
-            <BookDetails />
-          </Route>
-
-          {/* List Of Books Page  */}
-          <Route path="/Books">
-            <BookList />
-          </Route>
-
-          {/* Home Page  */}
-          <Route exact path="/">
-            <Home />
-          </Route>
-
-
-        </Switch>
-
-
+        {false ? <h2>Loading...</h2> : < Routes />}
+        {/* {shopStore.isLoading ? <h2>Loading...</h2> : < Routes />} */}
+        {/* {bookStore.isLoading ? <h2>Loading...</h2> : < Routes />} */}
       </ThemeProvider>
     </div>
 
   );
 }
 
-export default App;
+export default observer(App);

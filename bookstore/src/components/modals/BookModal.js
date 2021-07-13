@@ -20,11 +20,14 @@ const BookModal = (props) => {
 
     }
 
+    const handleImage = (event) => {
+        setbook({ ...book, image: event.target.files[0] });
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (props.oldBook) bookStore.updateBook(book);
-        else bookStore.createbook(book);
+        else bookStore.createbook(book, props.shop);
         props.closeModal();
 
     };
@@ -46,7 +49,7 @@ const BookModal = (props) => {
 
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Image</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Import an image" name="image" onChange={handleChange} value={book.image} />
+                            <input required type="file" class="form-control" id="exampleFormControlInput1" placeholder="Import an image" name="image" onChange={handleImage} />
                         </div>
 
                         <div class="mb-3">

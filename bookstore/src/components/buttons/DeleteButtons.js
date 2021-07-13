@@ -5,7 +5,6 @@ import bookStore from "../stores/BookStore";
 
 const DeleteButton = (props) => {
 
-
     const handleDelete = () => {
         bookStore.deletebook(props.bookId);
     };
